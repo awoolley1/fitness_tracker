@@ -12,7 +12,7 @@ router.post("/api/workouts", ({ body }, res) => {
       });
   });
 
-  // second post
+  //second post
   router.post("/api/workouts", ({ body }, res) => {
     Excercise.create(body)
       .then(dbExcercise => {
@@ -23,7 +23,7 @@ router.post("/api/workouts", ({ body }, res) => {
       });
   });
 
-  // put route
+  //put route
   router.put("/api/workouts/:id", ({ body }, res) => {
     Excercise.findByIdAndUpdate(
         params.id,
@@ -38,7 +38,7 @@ router.post("/api/workouts", ({ body }, res) => {
       });
   });
 
-  // get route
+ // get route
   router.get("/api/workouts/range", (req, res) => {
     Excercise.find({})
       .sort({ date: -1 })
