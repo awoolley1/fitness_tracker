@@ -12,7 +12,17 @@ app.use(express.static("public"));
 // require("./routes/apiRoutes.js")(app)
 require("./routes/htmlRoutes.js")(app)
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
+const url = 'mongodb://localhost/workout'
+
+const db = mongoose.connection
+db.once('open', _ => {
+  console.log('Database connected', url)
+})
+db.on('error', err => {
+  console.error('connection error', err)
+})
+
+mongoose.connect(process.env.MONGODB_URI || url, {
   useNewUrlParser: true,
   useFindAndModify: false
 });
