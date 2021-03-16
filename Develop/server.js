@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-// require("./routes/apiRoutes.js")(app)
+require("./routes/apiRoutes.js")(app)
 require("./routes/htmlRoutes.js")(app)
 
 const url = 'mongodb://localhost/workout'
