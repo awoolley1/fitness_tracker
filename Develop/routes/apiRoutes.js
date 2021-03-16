@@ -29,7 +29,7 @@ router.post("/api/workouts", ({ body }, res) => {
   });
 
  // get route
-  router.get("/api/workouts/range", (req, res) => {
+  router.get("/api/workouts", (req, res) => {
     Exercise.find({})
       .sort({ date: -1 })
       .then(dbExercise => {
