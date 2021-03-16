@@ -1,9 +1,9 @@
 const router = require("express").Router();
-const Exercise = require("../models/index.js");
+const Workout = require("../models/index.js");
 
 //post route
 router.post("/api/workouts", ({ body }, res) => {
-    Exercise.create(body)
+    Workout.create(body)
       .then(dbExercise => {
         res.json(dbExercise);
       })
@@ -15,7 +15,7 @@ router.post("/api/workouts", ({ body }, res) => {
 
   //put route
   router.put("/api/workouts/:id", ({ body, params }, res) => {
-    Exercise.findByIdAndUpdate(
+    Workout.findByIdAndUpdate(
         params.id,
         { $push: { excercises: body } },
         {new: true, runValidators: true}
@@ -30,7 +30,7 @@ router.post("/api/workouts", ({ body }, res) => {
 
  // get route
   router.get("/api/workouts", (req, res) => {
-    Exercise.find({})
+    Workout.find({})
       .sort({ date: -1 })
       .then(dbExercise => {
         res.json(dbExercise);
